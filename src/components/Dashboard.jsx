@@ -62,14 +62,39 @@ export default function Dashboard({ studentProfile, mastery, planItems, togglePl
           </div>
         </div>
 
-        <div className="card" style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
-          <div style={{ backgroundColor: 'var(--bg-accent-subtle)', color: 'var(--accent)', padding: '12px', borderRadius: '12px' }}>
-            <Award size={28} />
-          </div>
+        <div className="card" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '16px' }}>
           <div>
-            <p style={{ fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: '0.05em', color: 'var(--text-secondary)' }}>Projected Score</p>
-            <h3 style={{ fontSize: '1.5rem', fontWeight: '700' }}>{projectedTotal} <span style={{ fontSize: '0.9rem', fontWeight: '500', color: 'var(--text-secondary)' }}>/ 1600</span></h3>
-            <p style={{ fontSize: '0.75rem', color: 'var(--text-secondary)' }}>Math: {projectedMath} | Verbal: {projectedVerbal}</p>
+            <p style={{ fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: '0.05em', color: 'var(--text-secondary)', marginBottom: '4px' }}>Projected Score</p>
+            <h3 style={{ fontSize: '1.75rem', fontWeight: '800', lineHeight: '1.1' }}>{projectedTotal}</h3>
+            <p style={{ fontSize: '0.7rem', color: 'var(--text-tertiary)', marginBottom: '8px' }}>out of 1600 max</p>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '2px', fontSize: '0.75rem', borderTop: '1px solid var(--border-color)', paddingTop: '6px' }}>
+              <span style={{ color: 'var(--text-secondary)' }}>Math: <strong>{projectedMath}</strong></span>
+              <span style={{ color: 'var(--text-secondary)' }}>Verbal: <strong>{projectedVerbal}</strong></span>
+            </div>
+          </div>
+          <div className="score-ring-container" style={{ width: '90px', height: '90px' }}>
+            <svg width="90" height="90" viewBox="0 0 90 90" style={{ transform: 'rotate(-90deg)' }}>
+              <circle cx="45" cy="45" r="35" className="score-ring-bg" style={{ strokeWidth: 5, fill: 'none', stroke: 'var(--border-color)' }} />
+              <circle 
+                cx="45" 
+                cy="45" 
+                r="35" 
+                className="score-ring-fill" 
+                style={{ 
+                  strokeWidth: 5,
+                  fill: 'none',
+                  stroke: 'var(--accent)',
+                  strokeLinecap: 'round',
+                  strokeDasharray: 220,
+                  strokeDashoffset: 220 - (projectedTotal / 1600) * 220,
+                  transition: 'stroke-dashoffset 1s ease-out'
+                }} 
+              />
+            </svg>
+            <div className="score-ring-text" style={{ position: 'absolute', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', fontSize: '0.8rem' }}>
+              <span style={{ fontWeight: '700', color: 'var(--text-primary)' }}>{Math.round((projectedTotal / 1600) * 100)}%</span>
+              <span style={{ fontSize: '0.55rem', color: 'var(--text-tertiary)' }}>Mastery</span>
+            </div>
           </div>
         </div>
 

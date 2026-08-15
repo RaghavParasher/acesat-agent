@@ -76,13 +76,18 @@
 
 body {
   font-family: var(--font-sans);
-  background-color: var(--bg-app);
+  background: radial-gradient(circle at 50% 0%, hsl(210, 40%, 99%) 0%, hsl(210, 40%, 95%) 100%);
   color: var(--text-primary);
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  transition: background-color var(--transition-normal), color var(--transition-normal);
+  transition: background var(--transition-normal), color var(--transition-normal);
   overflow-x: hidden;
+  min-height: 100vh;
+}
+
+[data-theme='dark'] body {
+  background: radial-gradient(circle at 50% 0%, hsl(222, 47%, 12%) 0%, hsl(222, 47%, 6%) 100%);
 }
 
 /* Scrollbar Styling */
@@ -115,10 +120,16 @@ body {
   justify-content: space-between;
   align-items: center;
   padding: 12px 24px;
-  background-color: var(--bg-surface);
+  background-color: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(12px);
   border-bottom: 1px solid var(--border-color);
   z-index: 10;
   box-shadow: var(--shadow-sm);
+  transition: background-color var(--transition-normal);
+}
+
+[data-theme='dark'] .app-header {
+  background-color: rgba(10, 15, 30, 0.75);
 }
 
 .logo-section {
@@ -829,4 +840,46 @@ g:hover text {
   50% { transform: scale(1.02); opacity: 0.3; }
   100% { transform: scale(1.04); opacity: 0; }
 }
+
+/* Incorrect Answer Option Shake animation */
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  20%, 60% { transform: translateX(-6px); }
+  40%, 80% { transform: translateX(6px); }
+}
+
+.option-btn.incorrect {
+  animation: shake 0.4s cubic-bezier(.36,.07,.19,.97) both;
+}
+
+/* Score circular ring display */
+.score-ring-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.score-ring-bg {
+  stroke: var(--border-color);
+}
+
+.score-ring-fill {
+  stroke: var(--accent);
+  stroke-dasharray: 220;
+  stroke-dashoffset: 220;
+  transform: rotate(-90deg);
+  transform-origin: 50% 50%;
+  transition: stroke-dashoffset 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.score-ring-text {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-sans);
+}
+
 
