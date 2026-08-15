@@ -35,7 +35,7 @@ export default function App() {
 
   // API Key state
   const [apiKey, setApiKey] = useState(() => {
-    return localStorage.getItem('gemini_api_key') || '';
+    return import.meta.env.VITE_GEMINI_API_KEY || localStorage.getItem('gemini_api_key') || '';
   });
 
   // Student profile state
