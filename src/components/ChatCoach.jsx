@@ -224,36 +224,6 @@ export default function ChatCoach({
 
       {/* Settings / API Key / Coaching Guide Panel */}
       <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
-        <div className="card">
-          <div className="card-title">
-            <Key size={18} className="text-accent" />
-            AI Configuration
-          </div>
-          <p style={{ fontSize: '0.825rem', color: 'var(--text-secondary)', marginBottom: '14px' }}>
-            AceSAT comes with a high-quality simulated agent by default. To unlock open-ended conversation and custom SAT questions, add a Gemini API Key below.
-          </p>
-          
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', marginBottom: '16px' }}>
-            <label style={{ fontSize: '0.75rem', fontWeight: '600', textTransform: 'uppercase', color: 'var(--text-secondary)' }}>
-              Gemini API Key
-            </label>
-            <input
-              type="password"
-              className="chat-input"
-              style={{ width: '100%', padding: '10px 12px' }}
-              placeholder="AIzaSy..."
-              value={apiKey}
-              onChange={(e) => setApiKey(e.target.value)}
-            />
-          </div>
-
-          <div style={{ display: 'flex', gap: '8px', alignItems: 'flex-start', backgroundColor: 'var(--bg-accent-subtle)', padding: '12px', borderRadius: '10px', border: '1px solid var(--border-color)' }}>
-            <Info size={16} style={{ color: 'var(--accent)', flexShrink: 0, marginTop: '2px' }} />
-            <p style={{ fontSize: '0.75rem', color: 'var(--text-secondary)', lineHeight: '1.4' }}>
-              Your API key is saved locally in your browser memory and is only sent directly to Google Gemini's endpoints.
-            </p>
-          </div>
-        </div>
 
         <div className="card">
           <div className="card-title">
