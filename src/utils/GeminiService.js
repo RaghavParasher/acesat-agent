@@ -1,6 +1,6 @@
 // Helper to call Gemini API directly from the browser for live AI generation
 
-const MODEL_NAME = "gemini-1.5-flash";
+const MODEL_NAME = "gemini-flash-latest";
 
 export async function generateQuestionFromAI(apiKey, topic, difficulty, history = []) {
   const prompt = `You are AceSAT, an expert SAT tutor AI agent. 
